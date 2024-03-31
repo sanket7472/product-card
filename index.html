@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantity In\Dec</title>
+    <style>
+        body{
+            background-color:  #cccccc;
+        }
+        .product-card{
+            background-color: white;
+            width: 250px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0 0 0 0.2);
+            display: block;
+            margin: 30px auto;
+            padding: 5px;
+        }
+        .laptop-img{
+          height: 100px; 
+          display: block; 
+          margin:10px auto ;
+          background-image: linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%);
+          border-radius: 20px;
+          padding: 10px 20px;
+        }
+        .product-title{
+            font-size: 17px;
+        }
+        .card-body{
+            margin-left: 7px;
+        }
+        .product-description{
+            font-size: 12px;
+        }
+        .product-price{
+           font-weight: bold;
+           font-size: 20px; 
+        }
+        .btn{
+            background-image: linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%);
+            border: none;
+            color: white;
+            border-radius: 20px;
+            padding: 5px 20px;
+            display: block;
+            margin: 10px auto;
+        }
+        .btn-quantity{
+            height: 25px;
+
+        }
+        .btn-quantity-1{
+            height: 30px;
+        }
+        .Quantity-btn-container{
+           display: flex;
+           justify-content: center; 
+           align-items: center;
+        }
+        .Quantity-text{
+            font-size: 25px;
+            margin: auto 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <img src="laptop.png" class="laptop-img">
+      <div class="card-body">
+        <h1 class="product-title">Lenovo IdeaPad </h1>
+        <p class="product-description">
+            Lenovo IdeaPad Slim 3 Intel Core i5 12th Gen 1235U - (8 GB/512 GB SSD/Windows 11 Home) 15IAU7 Thin and Light Laptop 
+             (15.6 Inch, Arctic Grey, 1.63 Kg, With MS Office)
+        </p>
+        <p class="product-price">
+            ₹47,990/-
+        </p>
+
+        <p id="show-quantity">1 * 47,990</p>
+        <p id="show-total">Total: 47,990</p>
+        <div class="Quantity-btn-container">
+
+            <img src="./plus.png" class="btn-quantity" onclick="inc()"/>
+
+            <span class="Quantity-text" id="Quantity-text">1</span>
+
+            <img src="./minus.png" class="btn-quantity-1" onclick="dec()"/>
+        
+        </div>
+         <button type="button" class="btn">
+            Buy Now
+        </button>
+      </div>
+    </div>
+    
+    <script>
+        function inc(){
+           const Quantitytext = document.getElementById('Quantity-text');
+           const  showquantity = document.getElementById("show-quantity");
+           const  showtotal = document.getElementById("show-total") ;
+
+           let Quantity =parseInt(Quantitytext.innerText);
+
+           if(Quantity<5)
+           {
+            Quantitytext.innerText = ++Quantity;
+           }
+           else
+           {
+            alert("You can't add more than 3 items");
+           }
+
+           showquantity.innerText = `${Quantity} * 47990`;
+           showtotal.innerText=`Total:${Quantity* 47990}`;
+
+        }
+
+        function dec(){
+            const Quantitytext = document.getElementById('Quantity-text');
+            const  showquantity =document.getElementById("show-quantity");
+            const   showtotal=document.getElementById("show-total");
+
+            let Quantity =parseInt(Quantitytext.innerText);
+
+            if(Quantity>1)
+           {
+            Quantitytext.innerText = --Quantity;
+           }
+           else
+           {
+            alert("You can't add less than 1 items");
+           } 
+
+           showquantity.innerText = ` ${Quantity} * 47990` ;
+           showtotal.innerText=`Total:${Quantity* 47990}`
+
+        }
+    </script>
+</body>
+</html>
